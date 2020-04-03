@@ -7,11 +7,15 @@
         <meta name="color:Text" content="#000"/>
         <meta name="color:Secondary accent" content="#FFF"/>
         
-        <meta name="select:Header Height" content="auto" title="Auto">
         <meta name="select:Header Height" content="20%" title="20%">
         <meta name="select:Header Height" content="30%" title="30%">
         <meta name="select:Header Height" content="40%" title="40%">
-        <meta name="select:Header Height" content = "50%" title="50%"/>
+        <meta name="select:Header Height" content="50%" title="50%"/>
+        <meta name="select:Header Height" content="60%" title="60%"/>
+        <meta name="select:Header Height" content="70%" title="70%"/>
+        <meta name="select:Header Height" content="80%" title="80%"/>
+        <meta name="select:Header Height" content="90%" title="90%"/>
+        <meta name="select:Header Height" content="100%" title="100%"/>
         
         <meta name="image:Background" content="no image"/>
         
@@ -25,21 +29,28 @@
         <meta name="select:Content Font Size" content="20px" title="20">
         <meta name="select:Content Font Size" content="22px" title="22">
         <meta name="select:Content Font Size" content="24px" title="24">
-        <meta name="select:Content Font Size" content = "26px" title="26"/>
+        <meta name="select:Content Font Size" content="26px" title="26"/>
         
-        <meta name="select:Title Font Size" content = "32px" title="32"/>
-        <meta name="select:Title Font Size" content = "34px" title="34"/>
-        <meta name="select:Title Font Size" content = "36px" title="36"/>
-        <meta name="select:Title Font Size" content = "40px" title="40"/>
-        <meta name="select:Title Font Size" content = "48px" title="48"/>
-        <meta name="select:Title Font Size" content = "64px" title="64"/>
-        <meta name="select:Title Font Size" content = "72px" title="72"/>
+        <meta name="select:Content Width" content="80%" title="80%">
+        <meta name="select:Content Width" content="70%" title="70%">
+        <meta name="select:Content Width" content="60%" title="60%">
+        <meta name="select:Content Width" content="50%" title="50%"/>
+        <meta name="select:Content Width" content="40%" title="40%"/>
+        <meta name="select:Content Width" content="30%" title="30%"/>
+        
+        <meta name="select:Title Font Size" content="32px" title="32"/>
+        <meta name="select:Title Font Size" content="34px" title="34"/>
+        <meta name="select:Title Font Size" content="36px" title="36"/>
+        <meta name="select:Title Font Size" content="40px" title="40"/>
+        <meta name="select:Title Font Size" content="48px" title="48"/>
+        <meta name="select:Title Font Size" content="64px" title="64"/>
+        <meta name="select:Title Font Size" content="72px" title="72"/>
 
         <meta name="select:Description Font Size" content="18px" title="18">
         <meta name="select:Description Font Size" content="20px" title="20">
         <meta name="select:Description Font Size" content="22px" title="22">
         <meta name="select:Description Font Size" content="24px" title="24">
-        <meta name="select:Description Font Size" content = "26px" title="26"/>
+        <meta name="select:Description Font Size" content="26px" title="26"/>
 
         <meta name="if:Light Content Background" content="1">
         <meta name="if:Sticky nav bar" content="1">
@@ -52,29 +63,12 @@
         <link rel="alternate" type="application/rss+xml" href="{RSS}"/>
         <link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
         
-       <!-- consider removing -->
         <link rel="stylesheet" href="https://necolas.github.io/normalize.css/7.0.0/normalize.css" />
-        <link rel="stylesheet" href="http://static.tumblr.com/4jimgmz/Fm1ovdb3d/new2.css" />
+        <link rel="stylesheet" href="https://static.tumblr.com/4jimgmz/Fm1ovdb3d/new2.css" />
         
         <script src="https://use.fontawesome.com/3baccd4f46.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-         
-        <script type="text/javascript">
-            function changeClass(element, oldClass, newClass){
-                var element = document.getElementById("heart");
-                var child = element.firstElementChild;
-                child.className = child.className.replace(oldClass, newClass);
-            }
-        </script>
-         <!--
-         
-         TODO:
-         - and lightbox for single photos as well
-         - replace jQuery with javascript
-         - add media queries/adjust for screen sizes
-         - the hearts are ever so slightly misaligned, try fix that at some point
-         
-         -->
+        
         <title>{Title} | {block:TagPage}{Tag} | {/block:TagPage} {block:SearchPage}{lang:Search results for SearchQuery} | {/block:SearchPage}{block:PostSummary}{PostSummary} | {/block:PostSummary}
         </title>
         
@@ -120,7 +114,7 @@
             
             /* Lightbox */
             .tmblr-lightbox .lightbox-image-container {
-                width: fit-content; /* fixes problem but has compatability issues */
+                width: fit-content;
             }
             
             .tmblr-lightbox .lightbox-image {
@@ -150,7 +144,6 @@
             .banner-img {
             	text-align: center;
             	height: {select:Header Height};
-                max-height: 50%;
                 background-color: {BackgroundColor};
                 background-image: url("{HeaderImage}");
                 background-size: cover;
@@ -230,6 +223,7 @@
             
             .nav-button {
                 margin-right: 2em;
+                /* transition:all .5s ease-in-out; */
             }
             
             /* ******************** search box ********************* */
@@ -240,7 +234,7 @@
               height: 1.5em;
               outline: none;
             }
-            
+            	            
             input:focus {
                 background: {color:Secondary accent};
             }
@@ -275,6 +269,10 @@
             .pagination a:hover {
                 color: {color:Secondary Accent};
                 text-decoration: none;
+            }
+            
+            .pagination a, .pagination span {
+                margin: 0em 0.2em;
             }
             
             /* ****************** like/Reblog Buttons ************** */
@@ -372,10 +370,6 @@
                 margin-bottom: 0px;
             }
             
-            h2 {
-                
-            }
-            
             hr {
                 border: none;
                 background: {color:Secondary accent};
@@ -391,14 +385,18 @@
             .content-wrapper {
             	margin: auto;
             	padding: 0;
-            	width: 80%;
+            	width: {select:Content Width};
             	text-align: center;
             	border: 1px solid rgba(255, 255, 255, 0.1);
             	background-color: rgba(0, 0, 0, 0.1);
-            	{block:IfUseBackgroundImage}background-color: rgba(0, 0, 0, 0.8);{/block:IfUseBackgroundImage}
+            	{block:IfUseBackgroundImage}
+            	    background-color: rgba(0, 0, 0, 0.8);
+            	{/block:IfUseBackgroundImage}
             	{block:IfLightContentBackground}
-            	background-color: rgba(255, 255, 255, 0.1);
-            	{block:IfUseBackgroundImage}background-color: rgba(255, 255, 255, 0.8);{/block:IfUseBackgroundImage}
+            	    background-color: rgba(255, 255, 255, 0.1);
+            	    {block:IfUseBackgroundImage}
+            	        background-color: rgba(255, 255, 255, 0.8);
+            	    {/block:IfUseBackgroundImage}
                	{/block:IfLightContentBackground}
             }
             
@@ -409,11 +407,11 @@
             }
             
             .post {
-                margin: 2em 0em 2em 0em;
+                margin: 2em 0em 1.5em 0em;
                 line-height: 1.2;
             }
             
-            .post ul li, .post ol li {
+           .post ul li, .post ol li {
                 list-style-type: initial;
                 line-height: 1.5;
             }
@@ -439,18 +437,49 @@
 			    text-align: left;
 			}
 			
-			.body-text ol, .body-text ol li {
+            .body-text ol, .body-text ol li {
 			    list-style-type: decimal;
 			}
 			
 			.body-text ul, .body-text ol {
 			    margin-left: 1em;
 			}
-
+			
             /* photosets */
-            .ps {
-                max-width: 49%;
-                display: inline-block;
+            .photos {
+                display: flex;
+                flex-direction: column;
+                align-content: stretch;
+                margin-left: 0.5%;
+                margin-right: 0.5%;
+            }
+            
+            .row {
+                display: flex;
+                flex: 1 0 100%;
+            }
+            
+            .col {
+                flex: 0 1 100%;
+                margin: 0.5%;
+                overflow: hidden;
+            }
+            
+            .thumbnail {
+                height: 100%;
+                overflow: hidden;
+            }
+            
+            .thumbnail a {
+                display:block;
+                overflow: hidden;
+            }
+            
+            .thumbnail a img {
+                width: 100%;
+                height:100%;
+                object-fit: cover;
+                overflow: hidden;
             }
             
             /* ********** Tags ********** */
@@ -504,7 +533,11 @@
                 text-align: left;
                 margin: 0;
             }
-        
+            
+            .tumblr_audio_player {
+                height: 85px;
+            }
+            
             /* ******* Video ********* */
             .video div:nth-child(1){
                 margin: 0 auto;
@@ -667,18 +700,71 @@
                             {/block:Caption}
                         </li>
                     {/block:Panorama}
-                    <!------------- Photoset ------------------>
+                    <!------------- Photoset ----------------->
                     {block:Photoset}
                         <li class="post photoset">
-                            <script type="text/javascript">var arr_{PostID} = new Array();</script>
+                            <div class="photos">
+                            <script type="text/javascript">
+                                var arr_{PostID} = new Array();
+                                var layout = {JSPhotosetLayout};
+                                var photocount = 0;
+                                var photoclass = '', photos = [];
+                                for(var i=0;i<layout.length;i++) {
+                                    switch(layout[i]) {
+                                        case "1":
+                                            photoclass = 'col-lg-12 col';
+                                            break;
+                                        case "2":
+                                            photoclass = 'col-lg-6 col';
+                                            break;
+                                        case "3":
+                                            photoclass = 'col-lg-4 col';
+                                            break;
+                                        case "4":
+                                            photoclass = 'col-lg-3 col';
+                                            break;
+                                    }
+                                    for(var j=0; j < parseInt(layout[i]); j++) {
+                                        photos[photocount] = {
+                                            'class': photoclass,
+                                            rowsize: parseInt(layout[i])
+                                        };
+                                        photocount++;
+                                    }
+                                }
+                                photocount = 0;
+                                var rowcount = 0;
+                            </script>
                             {block:Photos} 
-                                <a class="ps" onclick="openLightbox(event, arr_{PostID})" href="{PhotoURL-500}" title="{lang:View high resolution}">
-                                    <img src="{PhotoURL-500}" id="id_{PhotoURL-500}" alt="{PhotoAlt}" data-lowres="{PhotoURL-500}" data-width="{PhotoWidth-500}" data-height="{PhotoHeight-500}" {block:HighRes}style="display:none"{/block:HighRes} /> </a>
-                                {block:HighRes}
-                               	<a class="ps" onclick="openLightbox(event, arr_{PostID})" href="{PhotoURL-HighRes}" title="{lang:View high resolution}">
-								    <img src="{PhotoURL-HighRes}" id="id_{PhotoURL-HighRes}" alt="{PhotoAlt}" data-lowres="{PhotoURL-500}" data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}"></a>
-                                {/block:HighRes}
+                                <script>
+                                    if(rowcount == 0) {
+                                        document.write('<div class="row">');
+                                    }
+                                </script>
+                                <div id="photosetphoto" class="col-lg-3">
+                                    <script>
+                                        var photo = document.getElementById('photosetphoto');
+                                        photo.className = photos[photocount].class;
+                                        photo.removeAttribute('id');
+                                        rowcount++;
+                                    </script>
+                                    <div class="thumbnail">
+                                        <a class="ps" onclick="openLightbox(event, arr_{PostID})" href="{PhotoURL-500}" title="{lang:View high resolution}">
+                                            <img src="{PhotoURL-500}" id="id_{PhotoURL-500}" alt="{PhotoAlt}" data-lowres="{PhotoURL-500}" data-width="{PhotoWidth-500}" data-height="{PhotoHeight-500}" {block:HighRes}style="display:none"{/block:HighRes} /> </a>
+                                        {block:HighRes}
+                                       	<a class="ps" onclick="openLightbox(event, arr_{PostID})" href="{PhotoURL-HighRes}" title="{lang:View high resolution}">
+        								    <img src="{PhotoURL-HighRes}" id="id_{PhotoURL-HighRes}" alt="{PhotoAlt}" data-lowres="{PhotoURL-500}" data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}"></a>
+                                        {/block:HighRes}
+                                    </div>
+                                </div>
+                                    
                                 <script type="text/javascript">
+                                    if(rowcount == photos[photocount].rowsize) {
+                                        document.write('</div>');
+                                        rowcount = 0;
+                                    }
+                                    photocount++;  
+                                    
                                     var img = document.getElementById("id_{PhotoURL-500}");
 							        {block:HighRes}img = document.getElementById("id_{PhotoURL-HighRes}");{block:HighRes}
 							        img.setAttribute("data-num", arr_{PostID}.length);
@@ -689,6 +775,7 @@
                     					high_res: img.src}); 
                                 </script>
                             {/block:Photos}
+                            </div>
                             {block:Caption}
                                  <div class="caption-inner"><div class="caption body-text">{Caption}</div></div>
                             {/block:Caption}
@@ -759,7 +846,8 @@
                     {/block:Video}
                     {block:Audio}
                         <li class="post audio">
-                            {AudioEmbed}{block:Caption}
+                            {AudioEmbed}
+                            {block:Caption}
                             <div>
                                  <div class="caption body-text">{Caption}</div>        
                             </div>
